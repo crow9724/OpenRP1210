@@ -1,0 +1,77 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../../lib/inc",
+            "name": "Headers"
+        },
+        {
+            "path": "../../lib/src",
+            "name": "Source"
+        },
+
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+
+            {
+                "name": "(gdb) Launch",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "enter program name, for example ${workspaceFolder}/a.out",
+                "args": [],
+                "stopAtEntry": false,
+                "cwd": "${fileDirname}",
+                "environment": [],
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    },
+                    {
+                        "description": "Set Disassembly Flavor to Intel",
+                        "text": "-gdb-set disassembly-flavor intel",
+                        "ignoreFailures": true
+                    }
+                ]
+            }
+        ]
+    },
+    "tasks" : {
+        "version" : "2.0.0",
+        "tasks": [
+            {
+                "type": "shell",
+                "label": "Make",
+                "command": "make",
+                "args": [
+                    
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder}/../linux"
+                },
+                "problemMatcher": [],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "detail": "Build OpenRP1210"
+            }
+        ]
+    },
+    "settings": {
+        "C_Cpp.default.includePath": [
+            "${workspaceFolder:Source}/../inc"
+        ],
+        "files.associations": {
+            "string.h": "c"
+        }
+    }
+}
+

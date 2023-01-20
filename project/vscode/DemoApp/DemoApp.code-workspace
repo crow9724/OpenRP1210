@@ -1,0 +1,130 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../../../demo/inc",
+            "name": "Headers"
+        },
+        {
+            "path": "../../../demo/src",
+            "name": "Source"
+        }
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Run DempApp",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceFolder:Source}/../../project/linux/bin/DemoApp",
+                "args": [],
+                "stopAtEntry": false,
+                "cwd": "${workspaceFolder:Source}/../../project/linux/bin/",
+                "environment": [],
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    },
+                    {
+                        "description": "Set Disassembly Flavor to Intel",
+                        "text": "-gdb-set disassembly-flavor intel",
+                        "ignoreFailures": true
+                    }
+                ],
+                "preLaunchTask": "Make",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
+            {
+                "name": "Run DempApp list devices",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceFolder:Source}/../../project/linux/bin/DemoApp",
+                "args": ["-action", "listDev"],
+                "stopAtEntry": false,
+                "cwd": "${workspaceFolder:Source}/../../project/linux/bin/",
+                "environment": [],
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    },
+                    {
+                        "description": "Set Disassembly Flavor to Intel",
+                        "text": "-gdb-set disassembly-flavor intel",
+                        "ignoreFailures": true
+                    }
+                ],
+                "preLaunchTask": "Make",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
+            {
+                "name": "Run DempApp read CAN",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceFolder:Source}/../../project/linux/bin/DemoApp",
+                "args": ["-action", "readCAN", "-t", "2000", "-baud", "500", "-vendor", "open_rp1210", "-device", "1"],
+                "stopAtEntry": false,
+                "cwd": "${workspaceFolder:Source}/../../project/linux/bin/",
+                "environment": [],
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    },
+                    {
+                        "description": "Set Disassembly Flavor to Intel",
+                        "text": "-gdb-set disassembly-flavor intel",
+                        "ignoreFailures": true
+                    }
+                ],
+                "preLaunchTask": "Make",
+                "miDebuggerPath": "/usr/bin/gdb"
+            }
+        ]
+    },
+    "tasks" : {
+        "version" : "2.0.0",
+        "tasks": [
+            {
+                "type": "shell",
+                "label": "Make",
+                "command": "make DemoApp",
+                "args": [
+                    
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder}/../../linux"
+                },
+                "problemMatcher": [],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "detail": "Build DemoApp"
+            }
+        ]
+    },
+    "settings": {
+        "C_Cpp.default.includePath": [
+            "${workspaceFolder:Source}/../inc",
+            "${workspaceFolder:Source}/../../lib/inc"
+        ],
+        "files.associations": {
+            "string.h": "c"
+        }
+    }
+}
+
